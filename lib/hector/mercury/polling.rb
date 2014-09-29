@@ -1,19 +1,22 @@
 module Hector
   module Mercury
-    DELIVER_EVENT = ->(message) do
+    DELIVER_EVENT = ->(event) do
       begin
-        if message
-          Hector::Mercury::Event.new(message).deliver
-        end
+        event.deliver if event
       rescue
       ensure
-        message = nil
+        event = nil
         Hector::Mercury.poll
       end
     end
 
     RECEIVE_MESSAGE = -> do
-      Hector::Mercury.queue.receive_message rescue nil
+      begin
+        if message = Hector::Mercury.queue.receive_message
+          Hector::Mercury::Event.new message
+        end
+      rescue
+      end
     end
 
     def self.poll
