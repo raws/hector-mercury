@@ -5,6 +5,7 @@ require 'json'
 
 require 'hector/mercury/boot'
 require 'hector/mercury/event'
+require 'hector/mercury/logging'
 require 'hector/mercury/payload'
 require 'hector/mercury/polling'
 
