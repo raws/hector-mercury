@@ -49,9 +49,21 @@ module Hector
       end
 
       def find_session(name)
-        Session.find name
+        find_session_by_username(name) || find_session_by_nickname(name)
+      end
+
+      def find_session_by_nickname(nickname)
+        Session.find nickname
       rescue ErroneousNickname
         nil
+      end
+
+      def find_session_by_username(username)
+        username = username.downcase
+
+        Session.all.find do |session|
+          session.username.downcase == username
+        end
       end
 
       def from

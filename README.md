@@ -31,7 +31,7 @@ Where the `event` object contains these keys:
 
 * `type` -- The event type. The only valid option is `message`.
 * `from` -- The nickname from which the event is delivered. You can deliver messages from any nickname, even if nobody with that name is currently connected to the server.
-* `to` -- The channel or nickname to which the event is delivered. By specifying a nickname, you can send private messages.
+* `to` -- The channel, username or nickname to which the event is delivered. By specifying a username or nickname, you can send private messages. When searching for a matching recipient, Mercury first searches channel names, then usernames, and finally nicknames.
 * `text` -- The message text to send.
 
 In order to process messages, your AWS user must be allowed to perform the following actions on your SQS queue:
