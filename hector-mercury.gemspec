@@ -10,7 +10,7 @@ spec = Gem::Specification.new do |s|
   s.files = Dir['lib/**/*.rb']
   s.require_path = 'lib'
 
-  s.add_dependency 'activesupport', '~> 4.1.5'
-  s.add_dependency 'aws-sdk', '~> 1.52.0'
+  s.add_dependency 'activesupport', '~> 5.0.1'
+  s.add_dependency 'aws-sdk', '>= 1.52.0', '< 2'
   s.add_dependency 'hector', '~> 1.0.9'
 end
